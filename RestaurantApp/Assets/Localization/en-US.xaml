@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--General-->
+    <sys:String x:Key="SearchTitle">Search...</sys:String>
+    <sys:String x:Key="AddButtonTooltip">Add a new record</sys:String>
+    <sys:String x:Key="EditButtonTooltip">Edit the selected record</sys:String>
+    <sys:String x:Key="DeleteButtonTooltip">Delete the selected record</sys:String>
+    <!--LoginWindow-->
+    <sys:String x:Key="LoginTitle">Authorization</sys:String>
+    <sys:String x:Key="AppTitle">Restaurant RMS</sys:String>
+    <sys:String x:Key="LoginSubTitle">Login to system</sys:String>
+    <sys:String x:Key="LoginTBTitle">Username</sys:String>
+    <sys:String x:Key="LoginTBMask">Enter username</sys:String>
+    <sys:String x:Key="PasswordPBTitle">Password</sys:String>
+    <sys:String x:Key="PasswordPBMask">Enter password</sys:String>
+    <sys:String x:Key="CancelBtn">Cancel</sys:String>
+    <sys:String x:Key="LoginBtn">Log in</sys:String>
+    <sys:String x:Key="EnterLoginError">Enter username!</sys:String>
+    <sys:String x:Key="EnterPasswordError">Enter password!</sys:String>
+    <sys:String x:Key="WrongLoginOrPasswordError">Wrong username or password.</sys:String>
+    <sys:String x:Key="BlockAccountError1">Your account has been blocked.</sys:String>
+    <sys:String x:Key="BlockAccountError2">Please contact the administrator.</sys:String>
+    <!--MainWindow-->
+    <sys:String x:Key="HomeNavMenu">Home</sys:String>
+    <sys:String x:Key="OrdersNavMenu">Orders</sys:String>
+    <sys:String x:Key="TableNavMenu">Tables</sys:String>
+    <sys:String x:Key="RestMenuNavMenu">Menu</sys:String>
+    <sys:String x:Key="EmployeeNavMenu">Staff</sys:String>
+    <sys:String x:Key="SettingNavMenu">Settings</sys:String>
+    <sys:String x:Key="ExitBtn">Exit</sys:String>
+    <!--OrdersViewUC-->
+    <sys:String x:Key="OrderTitle">Order History</sys:String>
+    <sys:String x:Key="DataGridHeaderOrderNumber">Order No.</sys:String>
+    <sys:String x:Key="DataGridHeaderDateTime">Date&amp;Time</sys:String>
+    <sys:String x:Key="DataGridHeaderTable">Table</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployee">Employee</sys:String>
+    <sys:String x:Key="DataGridHeaderPaymentType">Payment Type</sys:String>
+    <sys:String x:Key="DataGridHeaderSum">Total</sys:String>
+    <!--SettingViewUC-->
+    <sys:String x:Key="ThemeTitle">Theme:</sys:String>
+    <sys:String x:Key="IconsTitle">Icons:</sys:String>
+    <sys:String x:Key="LanguageTitle">Language:</sys:String>
+    <sys:String x:Key="LightThemeTitle">Light theme</sys:String>
+    <sys:String x:Key="DarkThemeTitle">Dark theme</sys:String>
+</ResourceDictionary>

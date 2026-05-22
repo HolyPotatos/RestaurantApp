@@ -1,0 +1,16 @@
+﻿<Application x:Class="RestaurantApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RestaurantApp"
+             StartupUri="Views/Windows/LoginWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Themes/LightTheme.xaml"/>
+                <ResourceDictionary Source="/Assets/Icons/MaterialDesignIconsDictionary.xaml"/>
+                <ResourceDictionary Source="/Assets/Localization/ru-RU.xaml"/>
+                <ResourceDictionary Source="/Assets/Themes/ResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

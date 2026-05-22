@@ -1,0 +1,149 @@
+﻿<Window x:Class="RestaurantApp.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantApp.Views.Windows"
+        mc:Ignorable="d"
+        Title="{DynamicResource AppTitle}" Height="750" Width="1200" MinHeight="600" MinWidth="600"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MaxHeight="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}"
+        Foreground="{DynamicResource TextPrimaryColor}">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="45" 
+                      ResizeBorderThickness="6" 
+                      GlassFrameThickness="0" 
+                      CornerRadius="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Border CornerRadius="5" BorderThickness="2" BorderBrush="{DynamicResource BorderDefaultColor}" Background="{DynamicResource BgColor}">
+        <Grid>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Margin" Value="0"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}" Value="Maximized">
+                            <Setter Property="Margin" Value="7"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border CornerRadius="5,5,0,0" Grid.ColumnSpan="2" Background="{DynamicResource SecondaryBgColor}">
+                <Grid >
+                    <Border Height="2" Background="{DynamicResource BorderDefaultColor}"  VerticalAlignment="Bottom"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0">
+                        <Button Style="{StaticResource MinimizeButtonStyle}" Width="45" Height="40" Click="Minimize_Click" WindowChrome.IsHitTestVisibleInChrome="True"/>
+                        <Button Style="{StaticResource MaximizeButtonStyle}" Width="45" Height="40" Click="Maximize_Click" WindowChrome.IsHitTestVisibleInChrome="True"/>
+                        <Button Style="{StaticResource CloseButtonStyle}" Width="45" Height="40" Click="Close_Click" WindowChrome.IsHitTestVisibleInChrome="True"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Grid Grid.ColumnSpan="2" Grid.Row="0" Width="250" HorizontalAlignment="Left">
+                <TextBlock Text="{DynamicResource AppTitle}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold"/>
+                <CheckBox Style="{DynamicResource HamburgerToggleStyle}" 
+                          WindowChrome.IsHitTestVisibleInChrome="True" 
+                          x:Name="HamburgerMenu" 
+                          VerticalAlignment="Center" 
+                          HorizontalAlignment="Left">
+                    <CheckBox.Triggers>
+                        <EventTrigger RoutedEvent="CheckBox.Checked">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="NavigationSidebar" 
+                                                     Storyboard.TargetProperty="Width" 
+                                                     To="50" Duration="0:0:0.2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="CheckBox.Unchecked">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="NavigationSidebar" 
+                                                     Storyboard.TargetProperty="Width" 
+                                                     To="250" Duration="0:0:0.2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </CheckBox.Triggers>
+                </CheckBox>
+            </Grid>
+            <Border CornerRadius="0,0,0,5" Grid.Row="1" Grid.Column="0" Width="250" x:Name="NavigationSidebar" Background="{DynamicResource SecondaryBgColor}">
+                <Grid>
+                    <StackPanel VerticalAlignment="Top">
+                        <RadioButton IsChecked="True" Style="{DynamicResource NavigationItemRadioButtonStyle}">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource HomeNavMenu}" Foreground="{DynamicResource TextPrimaryColor}" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,15,0" />
+                                    <Path Data="{DynamicResource HomeIcon}" Style="{DynamicResource IconStyle}" Height="30" Width="30"/>
+                                </StackPanel>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Style="{DynamicResource NavigationItemRadioButtonStyle}" Checked="OrdersRB_Checked">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource OrdersNavMenu}" Foreground="{DynamicResource TextPrimaryColor}" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,15,0" />
+                                    <Path Data="{DynamicResource OrderIcon}" Style="{DynamicResource IconStyle}" Height="30" Width="30"/>
+                                </StackPanel>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Style="{DynamicResource NavigationItemRadioButtonStyle}">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource TableNavMenu}" Foreground="{DynamicResource TextPrimaryColor}" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,15,0" />
+                                    <Path Data="{DynamicResource TableIcon}" Style="{DynamicResource IconStyle}" Height="30" Width="30"/>
+                                </StackPanel>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Style="{DynamicResource NavigationItemRadioButtonStyle}">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource RestMenuNavMenu}" Foreground="{DynamicResource TextPrimaryColor}" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,15,0" />
+                                    <Path Data="{DynamicResource RestMenuIcon}" Style="{DynamicResource IconStyle}" Height="30" Width="30"/>
+                                </StackPanel>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Style="{DynamicResource NavigationItemRadioButtonStyle}">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource EmployeeNavMenu}" Foreground="{DynamicResource TextPrimaryColor}" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,15,0" />
+                                    <Path Data="{DynamicResource AccountIcon}" Style="{DynamicResource IconStyle}" Height="30" Width="30"/>
+                                </StackPanel>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Style="{DynamicResource NavigationItemRadioButtonStyle}" Checked="SettingRB_Checked">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource SettingNavMenu}" Foreground="{DynamicResource TextPrimaryColor}" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,15,0" />
+                                    <Path Data="{DynamicResource SettingsIcon}" Style="{DynamicResource IconStyle}" Height="30" Width="30"/>
+                                </StackPanel>
+                            </RadioButton.Content>
+                        </RadioButton>
+                    </StackPanel>
+                    <Button Style="{DynamicResource LogoutButtonStyle}" Click="Exit_Click"/>
+                </Grid>
+            </Border>
+            <Frame Grid.Row="1" Grid.Column="1" x:Name="frame" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Border>
+</Window>
