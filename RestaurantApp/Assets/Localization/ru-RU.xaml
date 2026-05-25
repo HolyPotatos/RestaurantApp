@@ -25,7 +25,7 @@
     <!--MainWindow-->
     <sys:String x:Key="HomeNavMenu">Главный экран</sys:String>
     <sys:String x:Key="OrdersNavMenu">Заказы</sys:String>
-    <sys:String x:Key="TableNavMenu">Столики</sys:String>
+    <sys:String x:Key="ReservationNavMenu">Бронирование</sys:String>
     <sys:String x:Key="RestMenuNavMenu">Меню</sys:String>
     <sys:String x:Key="EmployeeNavMenu">Персонал</sys:String>
     <sys:String x:Key="SettingNavMenu">Настройки</sys:String>
@@ -38,10 +38,54 @@
     <sys:String x:Key="DataGridHeaderEmployee">Сотрудник</sys:String>
     <sys:String x:Key="DataGridHeaderPaymentType">Тип оплаты</sys:String>
     <sys:String x:Key="DataGridHeaderSum">Сумма</sys:String>
+    <sys:String x:Key="OrderDetailsTitle">Детали заказа:</sys:String>
     <!--SettingViewUC-->
     <sys:String x:Key="ThemeTitle">Тема:</sys:String>
     <sys:String x:Key="IconsTitle">Иконки:</sys:String>
     <sys:String x:Key="LanguageTitle">Язык:</sys:String>
     <sys:String x:Key="LightThemeTitle">Светлая тема</sys:String>
     <sys:String x:Key="DarkThemeTitle">Тёмная тема</sys:String>
+    <sys:String x:Key="ChangePasswordTitle">Смена пароля:</sys:String>
+    <sys:String x:Key="CurrentPasswordTitle">Введите текущий пароль</sys:String>
+    <sys:String x:Key="NewPasswordTitle">Введите новый пароль</sys:String>
+    <sys:String x:Key="RepeatNewPasswordTitle">Повторите новый пароль</sys:String>
+    <sys:String x:Key="ChangePasswordButton">Сменить пароль</sys:String>
+    <!--EmployeeViewUC-->
+    <sys:String x:Key="DataGridHeaderEmployeeNumber">№ Сотрудника</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeFirstName">Имя</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeLastName">Фамилия</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeMiddleName">Отчество</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeePhoneNumber">Номер телефона</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeRole">Должность</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeStatus">Статус</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeLogin">Логин</sys:String>
+    <sys:String x:Key="EmployeeTitle">Сотрудники</sys:String>
+    <sys:String x:Key="BlockButtonTooltip">Заблокировать пользователя</sys:String>
+    <sys:String x:Key="UnblockButtonTooltip">Разблокировать пользователя</sys:String>
+    <sys:String x:Key="ResetPasswordButtonTooltip">Сбросить пароль до стандартного (12345)</sys:String>
+    <sys:String x:Key="BlockStatus">Заблокирован</sys:String>
+    <sys:String x:Key="ActiveStatus">Активен</sys:String>
+    <!--MenuViewUC-->
+    <sys:String x:Key="MenuTitle">Меню</sys:String>
+    <sys:String x:Key="DataGridHeaderMenuID">№ Блюда</sys:String>
+    <sys:String x:Key="DataGridHeaderMenuTitle">Название</sys:String>
+    <sys:String x:Key="DataGridHeaderMenuPrice">Цена</sys:String>
+    <sys:String x:Key="DataGridHeaderMenuCategory">Категория</sys:String>
+    <sys:String x:Key="MenuBlockButtonTooltip">Сделать блюдо неактивным</sys:String>
+    <sys:String x:Key="MenuUnblockButtonTooltip">Сделать блюдо активным</sys:String>
+    <sys:String x:Key="MenuStatusActive">Активно</sys:String>
+    <sys:String x:Key="MenuStatusInactive">Неактивно</sys:String>
+    <!--ReservationViewUC-->
+    <sys:String x:Key="DataGridHeaderReservationID">№ Бронирования</sys:String>
+    <sys:String x:Key="DataGridHeaderReservationCustomerName">Клиент</sys:String>
+    <sys:String x:Key="DataGridHeaderReservationCustomerPhone">Телефон клиента</sys:String>
+    <sys:String x:Key="DataGridHeaderReservationDateStart">Время начала бронирования</sys:String>
+    <sys:String x:Key="DataGridHeaderReservationDateEnd">Время конца бронирования</sys:String>
+    <sys:String x:Key="DataGridHeaderReservationTable">Стол</sys:String>
+    <sys:String x:Key="ReservationActive">Активен</sys:String>
+    <sys:String x:Key="ReservationCompleted">Завершен</sys:String>
+    <sys:String x:Key="ReservationCancelled">Отменен</sys:String>
+    <sys:String x:Key="ReservationCancelledTooltip">Отменить бронирование</sys:String>
+    <sys:String x:Key="ReservationTitle">Бронирования</sys:String>
+
 </ResourceDictionary>

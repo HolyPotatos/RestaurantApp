@@ -491,6 +491,84 @@
         </Setter>
     </Style>
 
+    <Style x:Key="EmployeeBlockButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="Background" Value="{DynamicResource BorderHoverColor}"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="ToolTip" Value="{DynamicResource BlockButtonTooltip}"/>
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Path Data="{DynamicResource BlockIcon}" Style="{DynamicResource IconStyle}" Height="20" Width="20"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EmployeeUnblockButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="Background" Value="{DynamicResource BorderHoverColor}"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="ToolTip" Value="{DynamicResource UnblockButtonTooltip}"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Path Data="{DynamicResource UnblockIcon}" Style="{DynamicResource IconStyle}" Height="20" Width="20"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MenuBlockButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="Background" Value="{DynamicResource BorderHoverColor}"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="ToolTip" Value="{DynamicResource MenuBlockButtonTooltip}"/>
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Path Data="{DynamicResource MenuArchiveIcon}" Style="{DynamicResource IconStyle}" Height="20" Width="20"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ReservationCancelButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="Background" Value="{DynamicResource BorderHoverColor}"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="ToolTip" Value="{DynamicResource ReservationCancelledTooltip}"/>
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Path Data="{DynamicResource ReservationCancelledIcon}" Style="{DynamicResource IconStyle}" Height="20" Width="20"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MenuUnblockButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="Background" Value="{DynamicResource BorderHoverColor}"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="ToolTip" Value="{DynamicResource MenuUnblockButtonTooltip}"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Path Data="{DynamicResource MenuUnarchiveIcon}" Style="{DynamicResource IconStyle}" Height="20" Width="20"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ResetPasswordButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="Background" Value="{DynamicResource BorderHoverColor}"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="ToolTip" Value="{DynamicResource ResetPasswordButtonTooltip}"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Path Data="{DynamicResource ResetPasswordIcon}" Style="{DynamicResource IconStyle}" Height="20" Width="20"/>
+            </Setter.Value> 
+        </Setter>
+    </Style>
+
     <Style x:Key="SearchButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
         <Setter Property="Background" Value="{DynamicResource BorderHoverColor}"/>
         <Setter Property="Width" Value="100"/>
@@ -824,6 +902,7 @@
         <Setter Property="CanUserAddRows" Value="False"/>
         <Setter Property="CanUserDeleteRows" Value="False"/>
         <Setter Property="CanUserResizeColumns" Value="True"/>
+        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
         <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
@@ -989,6 +1068,39 @@
             </Style>
 
         </Style.Resources>
+    </Style>
+
+    <Style x:Key="DataGridExpandButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="Transparent">
+                        <Path x:Name="Arrow" 
+                          Fill="Transparent" 
+                          Stroke="{DynamicResource PrimaryPressedColor}" 
+                          StrokeThickness="2" 
+                          StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                          Data="M 0,0 L 5,5 L 10,0" 
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Arrow" Property="Stroke" Value="{DynamicResource TextPrimaryColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Arrow" Property="Data" Value="M 0,5 L 5,0 L 10,5"/>
+                            <Setter TargetName="Arrow" Property="Stroke" Value="{DynamicResource PrimaryColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

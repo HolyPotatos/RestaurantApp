@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="RestaurantApp.Views.Pages.MenuViewUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RestaurantApp.Views.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900"
+             Foreground="{DynamicResource TextPrimaryColor}"
+             Loaded="MenuLoaded">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,0,0,15">
+            <TextBlock Text="{DynamicResource MenuTitle}" FontSize="24" FontWeight="Bold" Margin="0,0,0,5"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="SearchTB" Style="{DynamicResource TextBoxStyle}" KeyDown="SearchTB_KeyDown" Tag="{DynamicResource SearchTitle}"/>
+                <Button Width="40" Style="{DynamicResource SearchButtonStyle}" Click="SearchClick"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="5,0">
+                    <Button Click="AddClick" ToolTip="{DynamicResource AddButtonTooltip}" Style="{DynamicResource AddButtonStyle}"/>
+                    <Button x:Name="EditButton" Click="EditClick" IsEnabled="False" ToolTip="{DynamicResource EditButtonTooltip}" Style="{DynamicResource EditButtonStyle}"/>
+                    <Button x:Name="InactiveButton" Click="InactiveClick" IsEnabled="False" Style="{DynamicResource MenuBlockButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" x:Name="MenuGrid"
+                  Style="{DynamicResource DataGridStyle}"
+                  SelectionChanged="MenuGrid_SelectionChanged">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource DataGridHeaderMenuID}" Binding="{Binding ID}" Width=".5*"/>
+                <DataGridTextColumn Header="{DynamicResource DataGridHeaderMenuTitle}" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="{DynamicResource DataGridHeaderMenuCategory}" Binding="{Binding MenuCategory.Title}" Width="*"/>
+                <DataGridTextColumn Header="{DynamicResource DataGridHeaderMenuPrice}" Binding="{Binding Price, StringFormat=\{0:N2\} ₽}" Width=".5*"/>
+                <DataGridTemplateColumn CanUserResize="False" CanUserReorder="True" Header="{DynamicResource DataGridHeaderEmployeeStatus}" Width="110">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border x:Name="StatusBadge" 
+                                    CornerRadius="12" 
+                                    Padding="10,4" 
+                                    HorizontalAlignment="Left">
+                                <TextBlock x:Name="StatusText" 
+                                           Text="Активен" 
+                                           FontSize="12" 
+                                           FontWeight="SemiBold" 
+                                           Foreground="{DynamicResource TextOnPrimaryColor}"/>
+                            </Border>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding isActive}" Value="False">
+                                    <Setter TargetName="StatusBadge" Property="Background" Value="{DynamicResource DangerColor}"/>
+                                    <Setter TargetName="StatusText" Property="Text" Value="{DynamicResource MenuStatusInactive}"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding isActive}" Value="True">
+                                    <Setter TargetName="StatusBadge" Property="Background" Value="{DynamicResource SuccessColor}"/>
+                                    <Setter TargetName="StatusText" Property="Text" Value="{DynamicResource MenuStatusActive}"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -14,7 +14,7 @@ namespace RestaurantApp.Models
         [Column(TypeName = "decimal(10,2)")]
         public decimal Price { get; set; }
         [Required]
-        public bool IsActive { get; set; }
+        public bool isActive { get; set; }
         [Required]
         public int MenuCategoryID { get; set; }
         public virtual MenuCategory? MenuCategory { get; set; }

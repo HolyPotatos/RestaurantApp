@@ -5,7 +5,7 @@
     <SolidColorBrush x:Key="TextPrimaryColor" Color="#1F1A16" />
     <SolidColorBrush x:Key="TextSecondaryColor" Color="#5C5148" />
     <SolidColorBrush x:Key="TextDisabledColor" Color="#968C83" />
-    <SolidColorBrush x:Key="TextOnPrimaryColor" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="TextOnPrimaryColor" Color="#F0EAE3" />
     <SolidColorBrush x:Key="PrimaryColor" Color="#6B4F3B" />
     <SolidColorBrush x:Key="PrimaryHoverColor" Color="#82624A" />
     <SolidColorBrush x:Key="PrimaryPressedColor" Color="#4A3526" />

@@ -2,6 +2,8 @@
 using RestaurantApp.Models;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace RestaurantApp.Views.Pages
 {
@@ -10,7 +12,7 @@ namespace RestaurantApp.Views.Pages
     /// </summary>
     public partial class OrdersViewUC : UserControl
     {
-        private bool _isRu = Application.Current.Resources.MergedDictionaries[2].Contains("ru-RU.xaml");
+        private bool _isRu = Application.Current.Resources.MergedDictionaries[2].Source.ToString().Contains("ru-RU.xaml");
         public OrdersViewUC()
         {
             InitializeComponent();
@@ -23,23 +25,25 @@ namespace RestaurantApp.Views.Pages
                 {
                     var orders = await db.CustomerOrders
                         .AsNoTracking()
-                        .Include(o => o.Employee)
-                        .Include(o => o.SeatTable)
-                        .Include(o => o.PaymentType)
+                        .Include(o => o.Employee!)
+                        .Include(o => o.SeatTable!)
+                        .Include(o => o.PaymentType!)
+                        .Include(o => o.OrderDetails!)
+                            .ThenInclude(od => od.Menu)
                         .OrderByDescending(o => o.ID)
                         .Where(o => o.ID.ToString().Contains(filter)
                         || o.OrderDate.ToString().Contains(filter)
-                        || o.PriceWithDiscount.ToString().Contains(filter)
-                        || o.SeatTable.TableNumber.Contains(filter)
-                        || o.Employee.LastName.Contains(filter)
-                        || o.PaymentType.Title.Contains(filter))
+                        || o.Price.ToString().Contains(filter)
+                        || o.SeatTable!.TableNumber.Contains(filter)
+                        || o.Employee!.LastName.Contains(filter)
+                        || o.PaymentType!.Title.Contains(filter))
                         .ToListAsync();
                     OrdersGrid.ItemsSource = orders;
                 }
             }
             catch (Exception ex)
             {
-                if (Application.Current.Resources.MergedDictionaries[2].Source.ToString().Contains("ru-RU.xaml"))
+                if (_isRu)
                 {
                     MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
                 }
@@ -51,9 +55,9 @@ namespace RestaurantApp.Views.Pages
             }
         }
 
-        private async void SearchTB_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private async void SearchTB_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 await LoadDataAsync(SearchTB.Text);
             }
@@ -63,11 +67,11 @@ namespace RestaurantApp.Views.Pages
 
         private async void AddClick(object sender, RoutedEventArgs e)
         {
-
+            //TODO
         }
         private async void EditClick(object sender, RoutedEventArgs e)
         {
-
+            //TODO
         }
         private async void DeleteClick(object sender, RoutedEventArgs e)
         {
@@ -78,7 +82,7 @@ namespace RestaurantApp.Views.Pages
             }
             else
             {
-                answer = MessageBox.Show($"Do you really want to delete the {((CustomerOrder)OrdersGrid.SelectedItem).ID}ID record permanently?", "Notification", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                answer = MessageBox.Show($"Do you really want to delete the {((CustomerOrder)OrdersGrid.SelectedItem).ID}ID record permanently?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             }
             if (answer == MessageBoxResult.Yes)
             {
@@ -110,16 +114,30 @@ namespace RestaurantApp.Views.Pages
 
         private void OrdersGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (OrdersGrid.SelectedItem != null)
+            DeleteButton.IsEnabled = OrdersGrid.SelectedItem != null;
+            EditButton.IsEnabled = OrdersGrid.SelectedItem != null;
+        }
+
+        private void MoreInfoClick(object sender, RoutedEventArgs e)
+        {
+            var btn = (ToggleButton)sender;
+            var dataItem = btn.DataContext;
+            var row = (DataGridRow)OrdersGrid.ItemContainerGenerator.ContainerFromItem(dataItem);
+            if (row != null)
             {
-                DeleteButton.IsEnabled = true;
-                EditButton.IsEnabled = true;
+                row.DetailsVisibility = btn.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
             }
-            else
+        }
+        private void InnerDataGrid_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            e.Handled = true;
+            var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta)
             {
-                DeleteButton.IsEnabled = false;
-                EditButton.IsEnabled = false;
-            }
+                RoutedEvent = UIElement.MouseWheelEvent,
+                Source = sender
+            };
+            var parent = ((Control)sender).Parent as UIElement;
+            parent?.RaiseEvent(eventArg);
         }
     }
 }

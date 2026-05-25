@@ -1,16 +1,5 @@
 ﻿using RestaurantApp.Views.Pages;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace RestaurantApp.Views.Windows
 {
@@ -19,14 +8,11 @@ namespace RestaurantApp.Views.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(int ID)
+        private int _currentUserID;
+        public MainWindow(int currentUserID)
         {
             InitializeComponent();
-        }
-
-        private void Minimize_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
+            _currentUserID = currentUserID;
         }
 
         private void Maximize_Click(object sender, RoutedEventArgs e)
@@ -40,21 +26,19 @@ namespace RestaurantApp.Views.Windows
                 this.WindowState = WindowState.Maximized;
             }
         }
+        private void Minimize_Click(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
 
-        private void Close_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        private void Close_Click(object sender, RoutedEventArgs e) => Application.Current.Shutdown();
 
-        private void OrdersRB_Checked(object sender, RoutedEventArgs e)
-        {
-            frame.Content = new OrdersViewUC();
-        }
+        private void OrdersRB_Checked(object sender, RoutedEventArgs e) => frame.Content = new OrdersViewUC();
 
-        private void SettingRB_Checked(object sender, RoutedEventArgs e)
-        {
-            frame.Content = new SettingViewUC();
-        }
+        private void SettingRB_Checked(object sender, RoutedEventArgs e) => frame.Content = new SettingViewUC(_currentUserID);
+
+        private void EmployeeRB_Checked(object sender, RoutedEventArgs e) => frame.Content = new EmployeeViewUC();
+
+        private void MenuRB_Checked(object sender, RoutedEventArgs e) => frame.Content = new MenuViewUC();
+
+        private void ReservationRB_Checked(object sender, RoutedEventArgs e) => frame.Content = new ReservationViewUC();
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -62,5 +46,6 @@ namespace RestaurantApp.Views.Windows
             lw.Show();
             this.Close();
         }
+
     }
 }

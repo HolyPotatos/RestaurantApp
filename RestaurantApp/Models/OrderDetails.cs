@@ -13,9 +13,6 @@ namespace RestaurantApp.Models
         [Column(TypeName = "decimal(10,2)")]
         public decimal Price { get; set; }
         [Required]
-        [Column(TypeName = "decimal(3,2)")]
-        public decimal Discount { get; set; }
-        [Required]
         public int MenuID { get; set; }
         [Required]
         public int CustomerOrderID { get; set; }

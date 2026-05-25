@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RestaurantApp;
@@ -11,9 +12,11 @@ using RestaurantApp;
 namespace RestaurantApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260524081652_DeleteTableStatus")]
+    partial class DeleteTableStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,16 +33,25 @@ namespace RestaurantApp.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
 
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("decimal(3,2)");
+
                     b.Property<int>("EmployeeID")
                         .HasColumnType("integer");
 
                     b.Property<DateTimeOffset>("OrderDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("OrderStatusID")
+                        .HasColumnType("integer");
+
                     b.Property<int>("PaymentTypeID")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal>("PriceWithDiscount")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<decimal>("PriceWithOutDiscount")
                         .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("SeatTableID")
@@ -48,6 +60,8 @@ namespace RestaurantApp.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("EmployeeID");
+
+                    b.HasIndex("OrderStatusID");
 
                     b.HasIndex("PaymentTypeID");
 
@@ -182,6 +196,9 @@ namespace RestaurantApp.Migrations
                     b.Property<int>("CustomerOrderID")
                         .HasColumnType("integer");
 
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("decimal(3,2)");
+
                     b.Property<int>("MenuID")
                         .HasColumnType("integer");
 
@@ -198,6 +215,24 @@ namespace RestaurantApp.Migrations
                     b.HasIndex("MenuID");
 
                     b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("RestaurantApp.Models.OrderStatus", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("OrderStatuses");
                 });
 
             modelBuilder.Entity("RestaurantApp.Models.PaymentType", b =>
@@ -304,6 +339,12 @@ namespace RestaurantApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("RestaurantApp.Models.OrderStatus", "OrderStatus")
+                        .WithMany("CustomerOrders")
+                        .HasForeignKey("OrderStatusID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RestaurantApp.Models.PaymentType", "PaymentType")
                         .WithMany("CustomerOrders")
                         .HasForeignKey("PaymentTypeID")
@@ -317,6 +358,8 @@ namespace RestaurantApp.Migrations
                         .IsRequired();
 
                     b.Navigation("Employee");
+
+                    b.Navigation("OrderStatus");
 
                     b.Navigation("PaymentType");
 
@@ -406,6 +449,11 @@ namespace RestaurantApp.Migrations
             modelBuilder.Entity("RestaurantApp.Models.MenuCategory", b =>
                 {
                     b.Navigation("Menus");
+                });
+
+            modelBuilder.Entity("RestaurantApp.Models.OrderStatus", b =>
+                {
+                    b.Navigation("CustomerOrders");
                 });
 
             modelBuilder.Entity("RestaurantApp.Models.PaymentType", b =>

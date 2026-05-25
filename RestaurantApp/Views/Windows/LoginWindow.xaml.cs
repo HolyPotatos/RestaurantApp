@@ -15,17 +15,9 @@ namespace RestaurantApp.Views.Windows
         private void UserPasswordBox_PasswordChanged(object sender, RoutedEventArgs e) => CheckPlaceholder();
         private void UserPasswordBox_GotFocus(object sender, RoutedEventArgs e) => CheckPlaceholder();
         private void UserPasswordBox_LostFocus(object sender, RoutedEventArgs e) => CheckPlaceholder();
-        private void CheckPlaceholder()
-        {
-            if (UserPasswordBox.IsFocused || UserPasswordBox.Password.Length > 0)
-            {
-                PasswordPlaceholder.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                PasswordPlaceholder.Visibility = Visibility.Visible;
-            }
-        }
+        private void CheckPlaceholder() => PasswordPlaceholder.Visibility = UserPasswordBox.IsFocused || UserPasswordBox.Password.Length > 0 ?
+                                           Visibility.Hidden : Visibility.Visible;
+
 
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
@@ -51,7 +43,7 @@ namespace RestaurantApp.Views.Windows
                 using (var db = new AppDbContext())
                 {
 
-                    Employee? employee = await db.AuthAsync(LoginTextBox.Text.Trim(), UserPasswordBox.Password.Trim());
+                    var employee = await db.AuthAsync(LoginTextBox.Text.Trim(), UserPasswordBox.Password.Trim());
                     if (employee == null)
                     {
                         WrongErrorTB.Visibility = Visibility.Visible;

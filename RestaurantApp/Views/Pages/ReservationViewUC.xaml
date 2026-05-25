@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="RestaurantApp.Views.Pages.ReservationViewUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RestaurantApp.Views.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900"
+             Foreground="{DynamicResource TextPrimaryColor}"
+             Loaded="ReservationLoaded">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,0,0,15">
+            <TextBlock Text="{DynamicResource ReservationTitle}" FontSize="24" FontWeight="Bold" Margin="0,0,0,5"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="SearchTB" Style="{DynamicResource TextBoxStyle}" KeyDown="SearchTB_KeyDown" Tag="{DynamicResource SearchTitle}"/>
+                <Button Width="40" Style="{DynamicResource SearchButtonStyle}" Click="SearchClick"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="5,0">
+                    <Button Click="AddClick" ToolTip="{DynamicResource AddButtonTooltip}" Style="{DynamicResource AddButtonStyle}"/>
+                    <Button x:Name="CancelButton" Click="CancelClick" IsEnabled="False" Style="{DynamicResource ReservationCancelButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" x:Name="ReservationGrid"
+                  Style="{DynamicResource DataGridStyle}"
+                  SelectionChanged="ReservationGrid_SelectionChanged">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource DataGridHeaderReservationID}" Binding="{Binding ID}" Width="*"/>
+                <DataGridTextColumn Header="{DynamicResource DataGridHeaderReservationCustomerName}" Binding="{Binding CustomerName}" Width="*"/>
+                <DataGridTextColumn Header="{DynamicResource DataGridHeaderReservationCustomerPhone}" Binding="{Binding CustomerPhone}" Width="*"/>
+                <DataGridTextColumn Header="{DynamicResource DataGridHeaderReservationDateStart}" Binding="{Binding ReservationDateStart, StringFormat=\{0:dd.MM.yyyy HH:mm\}}" Width="*"/>
+                <DataGridTextColumn Header="{DynamicResource DataGridHeaderReservationDateEnd}" Binding="{Binding ReservationDateEnd, StringFormat=\{0:dd.MM.yyyy HH:mm\}}" Width="*"/>
+                <DataGridTextColumn Header="{DynamicResource DataGridHeaderReservationTable}" Binding="{Binding SeatTable.TableNumber}" Width=".5*"/>
+                <DataGridTemplateColumn CanUserResize="False" Header="{DynamicResource DataGridHeaderEmployeeStatus}" Width="130">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border x:Name="StatusBadge" 
+                                    CornerRadius="12" 
+                                    Padding="10,4" 
+                                    HorizontalAlignment="Left">
+                                <TextBlock x:Name="StatusText" 
+                                            Text="Активен" 
+                                            FontSize="12" 
+                                            FontWeight="SemiBold" 
+                                            Foreground="{DynamicResource TextOnPrimaryColor}"/>
+                            </Border>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding ReservationStatus.Title}" Value="Завершен">
+                                    <Setter TargetName="StatusBadge" Property="Background" Value="{DynamicResource WarningColor}"/>
+                                    <Setter TargetName="StatusText" Property="Text" Value="{DynamicResource ReservationCompleted}"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ReservationStatus.Title}" Value="Отменен">
+                                    <Setter TargetName="StatusBadge" Property="Background" Value="{DynamicResource DangerColor}"/>
+                                    <Setter TargetName="StatusText" Property="Text" Value="{DynamicResource ReservationCancelled}"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ReservationStatus.Title}" Value="Активен">
+                                    <Setter TargetName="StatusBadge" Property="Background" Value="{DynamicResource SuccessColor}"/>
+                                    <Setter TargetName="StatusText" Property="Text" Value="{DynamicResource ReservationActive}"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
+

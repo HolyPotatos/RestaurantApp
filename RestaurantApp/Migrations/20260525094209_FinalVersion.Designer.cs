@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RestaurantApp;
@@ -11,9 +12,11 @@ using RestaurantApp;
 namespace RestaurantApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260525094209_FinalVersion")]
+    partial class FinalVersion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,6 +33,9 @@ namespace RestaurantApp.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
 
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("decimal(3,2)");
+
                     b.Property<int>("EmployeeID")
                         .HasColumnType("integer");
 
@@ -39,7 +45,10 @@ namespace RestaurantApp.Migrations
                     b.Property<int>("PaymentTypeID")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal>("PriceWithDiscount")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<decimal>("PriceWithOutDiscount")
                         .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("SeatTableID")
@@ -181,6 +190,9 @@ namespace RestaurantApp.Migrations
 
                     b.Property<int>("CustomerOrderID")
                         .HasColumnType("integer");
+
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("decimal(3,2)");
 
                     b.Property<int>("MenuID")
                         .HasColumnType("integer");

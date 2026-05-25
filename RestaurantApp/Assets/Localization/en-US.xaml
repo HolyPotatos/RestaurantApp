@@ -25,7 +25,7 @@
     <!--MainWindow-->
     <sys:String x:Key="HomeNavMenu">Home</sys:String>
     <sys:String x:Key="OrdersNavMenu">Orders</sys:String>
-    <sys:String x:Key="TableNavMenu">Tables</sys:String>
+    <sys:String x:Key="ReservationNavMenu">Reservation</sys:String>
     <sys:String x:Key="RestMenuNavMenu">Menu</sys:String>
     <sys:String x:Key="EmployeeNavMenu">Staff</sys:String>
     <sys:String x:Key="SettingNavMenu">Settings</sys:String>
@@ -38,10 +38,54 @@
     <sys:String x:Key="DataGridHeaderEmployee">Employee</sys:String>
     <sys:String x:Key="DataGridHeaderPaymentType">Payment Type</sys:String>
     <sys:String x:Key="DataGridHeaderSum">Total</sys:String>
+    <sys:String x:Key="OrderDetailsTitle">Order details:</sys:String>
     <!--SettingViewUC-->
     <sys:String x:Key="ThemeTitle">Theme:</sys:String>
     <sys:String x:Key="IconsTitle">Icons:</sys:String>
     <sys:String x:Key="LanguageTitle">Language:</sys:String>
     <sys:String x:Key="LightThemeTitle">Light theme</sys:String>
     <sys:String x:Key="DarkThemeTitle">Dark theme</sys:String>
+    <sys:String x:Key="ChangePasswordTitle">Change Password:</sys:String>
+    <sys:String x:Key="CurrentPasswordTitle">Enter current password</sys:String>
+    <sys:String x:Key="NewPasswordTitle">Enter new password</sys:String>
+    <sys:String x:Key="RepeatNewPasswordTitle">Confirm new password</sys:String>
+    <sys:String x:Key="ChangePasswordButton">Change Password</sys:String>
+    <!--EmployeeViewUC-->
+    <sys:String x:Key="DataGridHeaderEmployeeNumber">Employee No.</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeFirstName">First name</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeLastName">Last name</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeMiddleName">Middle name</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeePhoneNumber">Phone number</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeRole">Role</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeStatus">Status</sys:String>
+    <sys:String x:Key="DataGridHeaderEmployeeLogin">Username</sys:String>
+    <sys:String x:Key="EmployeeTitle">Employees</sys:String>
+    <sys:String x:Key="BlockButtonTooltip">Block user</sys:String>
+    <sys:String x:Key="UnblockButtonTooltip">Unblock user</sys:String>
+    <sys:String x:Key="ResetPasswordButtonTooltip">Reset password to default (12345)</sys:String>
+    <sys:String x:Key="BlockStatus">Blocked</sys:String>
+    <sys:String x:Key="ActiveStatus">Active</sys:String>
+    <!--MenuViewUC-->
+    <sys:String x:Key="MenuTitle">Menu</sys:String>
+    <sys:String x:Key="DataGridHeaderMenuID">Dish No.</sys:String>
+    <sys:String x:Key="DataGridHeaderMenuTitle">Title</sys:String>
+    <sys:String x:Key="DataGridHeaderMenuPrice">Price</sys:String>
+    <sys:String x:Key="DataGridHeaderMenuCategory">Category</sys:String>
+    <sys:String x:Key="MenuBlockButtonTooltip">Set dish as inactive</sys:String>
+    <sys:String x:Key="MenuUnblockButtonTooltip">Set dish as active</sys:String>
+    <sys:String x:Key="MenuStatusActive">Active</sys:String>
+    <sys:String x:Key="MenuStatusInactive">Inactive</sys:String>
+    <!--ReservationViewUC-->
+    <sys:String x:Key="DataGridHeaderReservationID">Reservation No.</sys:String>
+    <sys:String x:Key="DataGridHeaderReservationCustomerName">Customer Name</sys:String>
+    <sys:String x:Key="DataGridHeaderReservationCustomerPhone">Customer Phone</sys:String>
+    <sys:String x:Key="DataGridHeaderReservationDateStart">Start Time</sys:String>
+    <sys:String x:Key="DataGridHeaderReservationDateEnd">End Time</sys:String>
+    <sys:String x:Key="DataGridHeaderReservationTable">Table</sys:String>
+    <sys:String x:Key="ReservationActive">Active</sys:String>
+    <sys:String x:Key="ReservationCompleted">Completed</sys:String>
+    <sys:String x:Key="ReservationCancelled">Cancelled</sys:String>
+    <sys:String x:Key="ReservationCancelledTooltip">Cancel reservation</sys:String>
+    <sys:String x:Key="ReservationTitle">Reservation</sys:String>
+
 </ResourceDictionary>
