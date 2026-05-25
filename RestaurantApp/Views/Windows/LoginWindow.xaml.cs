@@ -55,7 +55,7 @@ namespace RestaurantApp.Views.Windows
                         BlockErrorTB2.Visibility = Visibility.Visible;
                         return;
                     }
-                    var mw = new MainWindow(employee.ID);
+                    var mw = new MainWindow(employee.ID, employee.EmployeeTitleID == 1 ? true : false);
                     mw.Show();
                     this.Close();
                 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantApp.Models;
+using RestaurantApp.Views.Windows;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -62,11 +63,22 @@ namespace RestaurantApp.Views.Pages
 
         private async void AddClick(object sender, RoutedEventArgs e)
         {
-            //TODO
+            var addWindow = new AddEditEmployeeWindow();
+            if (addWindow.ShowDialog() == true)
+            {
+                await LoadDataAsync();
+            }
         }
         private async void EditClick(object sender, RoutedEventArgs e)
         {
-            //TODO
+            if (EmployeeGrid.SelectedItem is Employee selectedEmp)
+            {
+                var editWindow = new AddEditEmployeeWindow(selectedEmp);
+                if (editWindow.ShowDialog() == true)
+                {
+                    await LoadDataAsync();
+                }
+            }
         }
         private async void BlockClick(object sender, RoutedEventArgs e)
         {

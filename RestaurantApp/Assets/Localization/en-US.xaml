@@ -7,6 +7,8 @@
     <sys:String x:Key="AddButtonTooltip">Add a new record</sys:String>
     <sys:String x:Key="EditButtonTooltip">Edit the selected record</sys:String>
     <sys:String x:Key="DeleteButtonTooltip">Delete the selected record</sys:String>
+    <sys:String x:Key="CancelBtn">Cancel</sys:String>
+    <sys:String x:Key="SaveBtn">Save</sys:String>
     <!--LoginWindow-->
     <sys:String x:Key="LoginTitle">Authorization</sys:String>
     <sys:String x:Key="AppTitle">Restaurant RMS</sys:String>
@@ -15,7 +17,6 @@
     <sys:String x:Key="LoginTBMask">Enter username</sys:String>
     <sys:String x:Key="PasswordPBTitle">Password</sys:String>
     <sys:String x:Key="PasswordPBMask">Enter password</sys:String>
-    <sys:String x:Key="CancelBtn">Cancel</sys:String>
     <sys:String x:Key="LoginBtn">Log in</sys:String>
     <sys:String x:Key="EnterLoginError">Enter username!</sys:String>
     <sys:String x:Key="EnterPasswordError">Enter password!</sys:String>
@@ -99,4 +100,36 @@
     <sys:String x:Key="AvgCheckTitle">Average Check</sys:String>
     <sys:String x:Key="RevenueTitle">Revenue Chart</sys:String>
     <sys:String x:Key="ExcelExportTitle">Export to Excel</sys:String>
+    <!--ReservationAddWindow-->
+    <sys:String x:Key="AddReservationTitle">Table Reservation</sys:String>
+    <sys:String x:Key="GuestNameTitle">Guest Name</sys:String>
+    <sys:String x:Key="GuestPlaceholder">e.g. John Doe</sys:String>
+    <sys:String x:Key="GuestPhoneTitle">Phone Number</sys:String>
+    <sys:String x:Key="GuestPhonePlaceholder">+1(___)___-__-__</sys:String>
+    <sys:String x:Key="TableTitle">Table</sys:String>
+    <sys:String x:Key="ReservationDateTitle">Reservation Date</sys:String>
+    <sys:String x:Key="ReservationDatePlaceholder">Select date</sys:String>
+    <sys:String x:Key="StartTimeTitle">Start Time</sys:String>
+    <sys:String x:Key="EndTimeTitle">End Time</sys:String>
+    <!--AddOrderWindow-->
+    <sys:String x:Key="OrderManagementTitle">Order Management</sys:String>
+    <sys:String x:Key="QuantityTitle">Qty:</sys:String>
+    <sys:String x:Key="AddToOrderBtnText">Add to Order</sys:String>
+    <sys:String x:Key="SaveOrderBtn">Submit</sys:String>
+    <sys:String x:Key="DataGridHeaderQuantity">Qty</sys:String>
+    <sys:String x:Key="DataGridHeaderSumTotal">TOTAL:</sys:String>
+    <!--AddEditEmployeeWindow-->
+    <sys:String x:Key="SurnamePlaceholder">Last Name</sys:String>
+    <sys:String x:Key="NamePlaceholder">First Name</sys:String>
+    <sys:String x:Key="PatronymicPlaceholder">Middle Name (optional)</sys:String>
+    <sys:String x:Key="PhonePlaceholder">Phone: +1(___)___-__-__</sys:String>
+    <sys:String x:Key="LoginPlaceholder">Username</sys:String>
+    <sys:String x:Key="EmployeeWindowTitle">Employee</sys:String>
+    <!--AddEditMenuWindow-->
+    <sys:String x:Key="DishNameLabel">Dish Name</sys:String>
+    <sys:String x:Key="DishPriceLabel">Price</sys:String>
+    <sys:String x:Key="DishCategoryLabel">Category</sys:String>
+    <sys:String x:Key="MenuEditValidationError">Please fill in all fields correctly!</sys:String>
+    <sys:String x:Key="MenuEditWindowAddTitle">Add Dish</sys:String>
+    <sys:String x:Key="MenuEditWindowEditTitle">Edit Dish</sys:String>
 </ResourceDictionary>

@@ -1,0 +1,193 @@
+﻿<Window x:Class="RestaurantApp.Views.Windows.AddOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantApp.Views.Windows"
+        mc:Ignorable="d"
+        Title="{DynamicResource OrderManagementTitle}" Height="750" Width="1100"
+        WindowStartupLocation="CenterOwner" WindowStyle="None"
+        Background="Transparent" AllowsTransparency="True" Loaded="Window_Loaded">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="35" ResizeBorderThickness="5" GlassFrameThickness="0" CornerRadius="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Border Background="{DynamicResource BgColor}" CornerRadius="15" BorderBrush="{DynamicResource BorderDefaultColor}" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Header_MouseLeftButtonDown">
+                <TextBlock Text="{DynamicResource OrderManagementTitle}" VerticalAlignment="Center" Margin="20,0,0,0"
+                           Foreground="{DynamicResource TextSecondaryColor}" FontSize="14" FontWeight="SemiBold"/>
+
+                <Button Style="{DynamicResource CloseButtonStyle}"
+                        WindowChrome.IsHitTestVisibleInChrome="True"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,10,0"
+                        Click="Close_Click"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="320"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                    <TextBlock Text="{DynamicResource DataGridHeaderMenuCategory}" Foreground="{DynamicResource TextPrimaryColor}" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <ListBox x:Name="CategoriesListBox"
+                             Background="Transparent" BorderThickness="0"
+                             DisplayMemberPath="Title"
+                             SelectionChanged="CategoriesListBox_SelectionChanged">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Foreground" Value="{DynamicResource TextPrimaryColor}"/>
+                                <Setter Property="Padding" Value="10,8"/>
+                                <Setter Property="Margin" Value="0,2"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </StackPanel>
+
+                <Grid Grid.Column="1" Margin="10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="0,0,0,15">
+                        <TextBox x:Name="SearchDishTB" Style="{DynamicResource TextBoxStyle}" Tag="{DynamicResource SearchTitle}" Height="40" Padding="10,0,45,0" VerticalContentAlignment="Center"/>
+                        <Button Style="{DynamicResource SearchButtonStyle}" Width="40" Height="38" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,1,0" Click="Search_Click"/>
+                    </Grid>
+
+                    <DataGrid x:Name="MenuDataGrid" Style="{DynamicResource DataGridStyle}" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False"
+                              HeadersVisibility="Column" Background="Transparent" BorderThickness="1"
+                              BorderBrush="{DynamicResource BorderDefaultColor}" IsReadOnly="True"
+                              GridLinesVisibility="All" HorizontalGridLinesBrush="{DynamicResource BorderDefaultColor}" VerticalGridLinesBrush="{DynamicResource BorderDefaultColor}">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="Height" Value="38"/>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{DynamicResource DataGridHeaderMenuTitle}" Binding="{Binding Title}" Width="*"/>
+                            <DataGridTextColumn Header="{DynamicResource DataGridHeaderMenuPrice}" Binding="{Binding Price, StringFormat={}{0:F2}}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="2" Margin="0,15,0,0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <TextBlock Text="{DynamicResource QuantityTitle}" Foreground="{DynamicResource TextSecondaryColor}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <Button Content="-" Style="{DynamicResource SecondaryButtonStyle}" Width="40" Height="40" Click="Minus_Click" FontSize="18" FontWeight="Bold"/>
+                            <TextBox x:Name="QuantityTB" Text="1" Width="50" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="6,0" Style="{DynamicResource TextBoxStyle}"/>
+                            <Button Content="+" Style="{DynamicResource SecondaryButtonStyle}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="40" Height="40" Click="Plus_Click" FontSize="18" FontWeight="Bold"/>
+                            <Button Style="{DynamicResource PrimaryButtonStyle}" ToolTip="{DynamicResource AddButtonTooltip}" Height="40" Margin="10,0,0,0" Padding="15,0" Click="AddToOrder_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Path Data="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" Fill="White" Stretch="Uniform" Width="12" Height="12" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{DynamicResource AddToOrderBtnText}" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <Border Grid.Column="2" Background="{DynamicResource SecondaryBgColor}" CornerRadius="10" Padding="15">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Margin="0,0,0,15">
+                            <TextBlock Text="{DynamicResource OrderDetailsTitle}" Foreground="{DynamicResource TextPrimaryColor}" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                            <TextBlock Text="{DynamicResource DataGridHeaderTable}" Foreground="{DynamicResource TextSecondaryColor}" FontSize="12" Margin="0,0,0,3"/>
+                            <ComboBox x:Name="TableCB" Style="{DynamicResource ComboBoxStyle}" DisplayMemberPath="TableNumber" SelectedValuePath="ID" Margin="0,0,0,10"/>
+                            <TextBlock Text="{DynamicResource DataGridHeaderPaymentType}" Foreground="{DynamicResource TextSecondaryColor}" FontSize="12" Margin="0,0,0,3"/>
+                            <ComboBox x:Name="PaymentCB" Style="{DynamicResource ComboBoxStyle}" DisplayMemberPath="Title" SelectedValuePath="ID" Margin="0,0,0,10"/>
+                        </StackPanel>
+
+                        <DataGrid x:Name="OrderCompositionGrid" Style="{DynamicResource DataGridStyle}" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False"
+                                  HeadersVisibility="Column" Background="Transparent" BorderThickness="1"
+                                  BorderBrush="{DynamicResource BorderDefaultColor}"
+                                  GridLinesVisibility="All"
+                                  HorizontalGridLinesBrush="{DynamicResource BorderDefaultColor}"
+                                  VerticalGridLinesBrush="{DynamicResource BorderDefaultColor}"
+                                  RowHeaderWidth="0">
+
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Height" Value="38"/>
+                                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                                </Style>
+                            </DataGrid.CellStyle>
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="{DynamicResource DataGridHeaderMenuTitle}" Binding="{Binding MenuTitle}" Width="*"/>
+
+                                <DataGridTextColumn Header="{DynamicResource DataGridHeaderQuantity}" Binding="{Binding Quantity}" Width="65">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+
+                                <DataGridTextColumn Header="{DynamicResource DataGridHeaderMenuPrice}" Binding="{Binding Price, StringFormat={}{0:F2}}" Width="65">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                            <Setter Property="Margin" Value="0,0,4,0"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+
+                                <DataGridTemplateColumn Width="35">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="×" Background="Transparent" BorderThickness="0" Foreground="Red" FontSize="16" FontWeight="Bold" Click="RemoveFromOrder_Click" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Grid.Row="2" Margin="0,15">
+                            <Separator Background="{DynamicResource BorderDefaultColor}" Margin="0,0,0,10"/>
+                            <Grid>
+                                <TextBlock Text="{DynamicResource DataGridHeaderSumTotal}" Foreground="{DynamicResource TextPrimaryColor}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="TotalSumText" Text="0.00" HorizontalAlignment="Right" Foreground="{DynamicResource TextPrimaryColor}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
+                            </Grid>
+                        </StackPanel>
+
+                        <Grid Grid.Row="3" Margin="0,5,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Style="{DynamicResource SecondaryButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" Height="40" Margin="0,0,6,0" Click="Close_Click">
+                                <TextBlock Text="{DynamicResource CancelBtn}" FontWeight="SemiBold"/>
+                            </Button>
+
+                            <Button x:Name="SaveBtn" Style="{DynamicResource PrimaryButtonStyle}" Height="40" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="SaveOrder_Click">
+                                <TextBlock Text="{DynamicResource SaveOrderBtn}" FontWeight="SemiBold"/>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

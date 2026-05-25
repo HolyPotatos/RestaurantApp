@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantApp.Models;
+using RestaurantApp.Views.Windows;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -61,7 +62,8 @@ namespace RestaurantApp.Views.Pages
 
         private async void AddClick(object sender, RoutedEventArgs e)
         {
-            //TODO
+            var arw = new AddReservationWindow();
+            if (arw.ShowDialog() == true) await LoadDataAsync(SearchTB.Text);
         }
         private async void CancelClick(object sender, RoutedEventArgs e)
         {

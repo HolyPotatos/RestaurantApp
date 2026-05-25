@@ -67,7 +67,6 @@
                 <Button Width="40" Style="{DynamicResource SearchButtonStyle}" Click="SearchClick"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="5,0">
                     <Button Click="AddClick" ToolTip="{DynamicResource AddButtonTooltip}" Style="{DynamicResource AddButtonStyle}"/>
-                    <Button x:Name="EditButton" Click="EditClick" IsEnabled="False" ToolTip="{DynamicResource EditButtonTooltip}" Style="{DynamicResource EditButtonStyle}"/>
                     <Button x:Name="DeleteButton" Click="DeleteClick" IsEnabled="False" ToolTip="{DynamicResource DeleteButtonTooltip}" Style="{DynamicResource DeleteButtonStyle}"/>
                 </StackPanel>
             </Grid>

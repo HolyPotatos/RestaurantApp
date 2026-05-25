@@ -9,10 +9,14 @@ namespace RestaurantApp.Views.Windows
     public partial class MainWindow : Window
     {
         private int _currentUserID;
-        public MainWindow(int currentUserID)
+        public MainWindow(int currentUserID, bool isAdmin)
         {
             InitializeComponent();
             _currentUserID = currentUserID;
+            if (!isAdmin)
+            {
+                EmployeeRB.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void Maximize_Click(object sender, RoutedEventArgs e)
@@ -54,6 +58,5 @@ namespace RestaurantApp.Views.Windows
             lw.Show();
             this.Close();
         }
-
     }
 }

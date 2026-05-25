@@ -7,6 +7,8 @@
     <sys:String x:Key="AddButtonTooltip">Добавить новую запись</sys:String>
     <sys:String x:Key="EditButtonTooltip">Редактировать выбранную запись</sys:String>
     <sys:String x:Key="DeleteButtonTooltip">Удалить выбранную запись</sys:String>
+    <sys:String x:Key="CancelBtn">Отмена</sys:String>
+    <sys:String x:Key="SaveBtn">Сохранить</sys:String>
     <!--LoginWindow-->
     <sys:String x:Key="LoginTitle">Авторизация</sys:String>
     <sys:String x:Key="AppTitle">АРМ Ресторана</sys:String>
@@ -15,7 +17,6 @@
     <sys:String x:Key="LoginTBMask">Введите логин</sys:String>
     <sys:String x:Key="PasswordPBTitle">Пароль</sys:String>
     <sys:String x:Key="PasswordPBMask">Введите пароль</sys:String>
-    <sys:String x:Key="CancelBtn">Отмена</sys:String>
     <sys:String x:Key="LoginBtn">Войти</sys:String>
     <sys:String x:Key="EnterLoginError">Введите логин!</sys:String>
     <sys:String x:Key="EnterPasswordError">Введите пароль!</sys:String>
@@ -99,4 +100,36 @@
     <sys:String x:Key="AvgCheckTitle">Средний чек</sys:String>
     <sys:String x:Key="RevenueTitle">График выручки</sys:String>
     <sys:String x:Key="ExcelExportTitle">Экспортировать в Excel</sys:String>
+    <!--ReservationAddWindow-->
+    <sys:String x:Key="AddReservationTitle">Бронирование столика</sys:String>
+    <sys:String x:Key="GuestNameTitle">Имя гостя</sys:String>
+    <sys:String x:Key="GuestPlaceholder">Например: Иванов Иван</sys:String>
+    <sys:String x:Key="GuestPhoneTitle">Телефон</sys:String>
+    <sys:String x:Key="GuestPhonePlaceholder">8(___)___-__-__</sys:String>
+    <sys:String x:Key="TableTitle">Столик</sys:String>
+    <sys:String x:Key="ReservationDateTitle">Дата бронирования</sys:String>
+    <sys:String x:Key="ReservationDatePlaceholder">Выберите дату</sys:String>
+    <sys:String x:Key="StartTimeTitle">Время начала</sys:String>
+    <sys:String x:Key="EndTimeTitle">Время конца</sys:String>
+    <!--AddOrderWindow-->
+    <sys:String x:Key="OrderManagementTitle">Управление заказом</sys:String>
+    <sys:String x:Key="QuantityTitle">Кол-во:</sys:String>
+    <sys:String x:Key="AddToOrderBtnText">Добавить в заказ</sys:String>
+    <sys:String x:Key="SaveOrderBtn">Оформить</sys:String>
+    <sys:String x:Key="DataGridHeaderQuantity">Кол-во</sys:String>
+    <sys:String x:Key="DataGridHeaderSumTotal">ИТОГО:</sys:String>
+    <!--AddEditEmployeeWindow-->
+    <sys:String x:Key="SurnamePlaceholder">Фамилия</sys:String>
+    <sys:String x:Key="NamePlaceholder">Имя</sys:String>
+    <sys:String x:Key="PatronymicPlaceholder">Отчество (если есть)</sys:String>
+    <sys:String x:Key="PhonePlaceholder">Телефон: 8(___)___-__-__</sys:String>
+    <sys:String x:Key="LoginPlaceholder">Логин</sys:String>
+    <sys:String x:Key="EmployeeWindowTitle">Сотрудник</sys:String>
+    <!--AddEditMenuWindow-->
+    <sys:String x:Key="DishNameLabel">Блюдо</sys:String>
+    <sys:String x:Key="DishPriceLabel">Цена</sys:String>
+    <sys:String x:Key="DishCategoryLabel">Категория</sys:String>
+    <sys:String x:Key="MenuEditValidationError">Пожалуйста, заполните все поля корректно!</sys:String>
+    <sys:String x:Key="MenuEditWindowAddTitle">Добавление блюда</sys:String>
+    <sys:String x:Key="MenuEditWindowEditTitle">Редактирование блюда</sys:String>
 </ResourceDictionary>

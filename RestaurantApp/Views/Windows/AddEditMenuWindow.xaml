@@ -1,0 +1,103 @@
+﻿<Window x:Class="RestaurantApp.Views.Windows.AddEditMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Menu Item Management" Height="440" Width="750"
+        WindowStartupLocation="CenterOwner" WindowStyle="None"
+        Background="Transparent" AllowsTransparency="True"
+        Loaded="Window_Loaded">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="40" ResizeBorderThickness="5" GlassFrameThickness="0" CornerRadius="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Border Background="{DynamicResource BgColor}" CornerRadius="20" BorderBrush="{DynamicResource BorderDefaultColor}" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Header_MouseLeftButtonDown" Margin="40,30,40,0">
+                <StackPanel>
+                    <TextBlock x:Name="WindowTitleBlock" 
+                               Text="{DynamicResource MenuEditWindowAddTitle}" 
+                               FontSize="22" 
+                               FontWeight="Bold" 
+                               Foreground="{DynamicResource TextPrimaryColor}"/>
+                    <Separator Background="{DynamicResource BorderDefaultColor}" Margin="0,15,0,0" Height="1"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="40,25,40,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" VerticalAlignment="Top">
+                    <TextBlock Text="{DynamicResource DishNameLabel}" 
+                               FontSize="15" 
+                               FontWeight="SemiBold" 
+                               Margin="5,0,0,10" 
+                               Foreground="{DynamicResource TextPrimaryColor}"/>
+                    <Border Background="{DynamicResource SecondaryBgColor}" CornerRadius="12" BorderThickness="1" BorderBrush="{DynamicResource BorderDefaultColor}" Padding="12,2" Margin="0,0,0,25">
+                        <TextBox x:Name="TitleTB" Style="{x:Null}" FontSize="16" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Height="42" Foreground="{DynamicResource TextPrimaryColor}"/>
+                    </Border>
+
+                    <TextBlock Text="{DynamicResource DishCategoryLabel}" 
+                               FontSize="15" 
+                               FontWeight="SemiBold" 
+                               Margin="5,0,0,10" 
+                               Foreground="{DynamicResource TextPrimaryColor}"/>
+                    <ComboBox x:Name="CategoryCB" 
+                              Style="{DynamicResource ComboBoxStyle}" 
+                              FontSize="16" 
+                              DisplayMemberPath="Title" 
+                              SelectedValuePath="ID" 
+                              Height="46" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" VerticalAlignment="Top">
+                    <TextBlock Text="{DynamicResource DishPriceLabel}" 
+                               FontSize="15" 
+                               FontWeight="SemiBold" 
+                               Margin="5,0,0,10" 
+                               Foreground="{DynamicResource TextPrimaryColor}"/>
+                    <Border Background="{DynamicResource SecondaryBgColor}" CornerRadius="12" BorderThickness="1" BorderBrush="{DynamicResource BorderDefaultColor}" Padding="12,2">
+                        <TextBox x:Name="PriceTB" Style="{x:Null}" FontSize="16" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Height="42" PreviewTextInput="PriceTB_PreviewTextInput" Foreground="{DynamicResource TextPrimaryColor}"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+            <Border Grid.Row="2" Background="{DynamicResource SecondaryBgColor}" CornerRadius="0,0,20,20" Padding="40,22">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="1" 
+                            Content="{DynamicResource CancelBtn}" 
+                            Style="{DynamicResource SecondaryButtonStyle}"
+                            Click="CancelClick" 
+                            Width="150" Height="45" 
+                            Margin="0,0,15,0"
+                            Cursor="Hand"/>
+
+                    <Button Grid.Column="2" 
+                            Content="{DynamicResource SaveOrderBtn}" 
+                            Style="{DynamicResource PrimaryButtonStyle}"
+                            Click="SaveClick" 
+                            Width="170" Height="45" 
+                            Cursor="Hand"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

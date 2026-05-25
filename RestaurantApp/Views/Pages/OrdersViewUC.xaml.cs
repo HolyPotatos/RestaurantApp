@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantApp.Models;
+using RestaurantApp.Views.Windows;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -67,11 +68,12 @@ namespace RestaurantApp.Views.Pages
 
         private async void AddClick(object sender, RoutedEventArgs e)
         {
-            //TODO
-        }
-        private async void EditClick(object sender, RoutedEventArgs e)
-        {
-            //TODO
+            var editWindow = new AddOrderWindow();
+            editWindow.Owner = Window.GetWindow(this);
+            if (editWindow.ShowDialog() == true)
+            {
+                await LoadDataAsync(SearchTB.Text);
+            }
         }
         private async void DeleteClick(object sender, RoutedEventArgs e)
         {
@@ -115,7 +117,6 @@ namespace RestaurantApp.Views.Pages
         private void OrdersGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DeleteButton.IsEnabled = OrdersGrid.SelectedItem != null;
-            EditButton.IsEnabled = OrdersGrid.SelectedItem != null;
         }
 
         private void MoreInfoClick(object sender, RoutedEventArgs e)

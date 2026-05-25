@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RestaurantApp.Views.Windows;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -58,11 +59,29 @@ namespace RestaurantApp.Views.Pages
 
         private async void AddClick(object sender, RoutedEventArgs e)
         {
-            //TODO
+            var editWindow = new AddEditMenuWindow();
+            editWindow.Owner = Window.GetWindow(this);
+
+            if (editWindow.ShowDialog() == true)
+            {
+                await LoadDataAsync(SearchTB.Text);
+            }
         }
+
         private async void EditClick(object sender, RoutedEventArgs e)
         {
-            //TODO
+            if (MenuGrid.SelectedItem == null) return;
+
+            var selectedItem = MenuGrid.SelectedItem as Models.Menu;
+            if (selectedItem == null) return;
+
+            var editWindow = new AddEditMenuWindow(selectedItem);
+            editWindow.Owner = Window.GetWindow(this);
+
+            if (editWindow.ShowDialog() == true)
+            {
+                await LoadDataAsync(SearchTB.Text);
+            }
         }
         private async void InactiveClick(object sender, RoutedEventArgs e)
         {

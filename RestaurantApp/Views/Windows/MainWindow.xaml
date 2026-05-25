@@ -123,7 +123,7 @@
                                 </StackPanel>
                             </RadioButton.Content>
                         </RadioButton>
-                        <RadioButton Style="{DynamicResource NavigationItemRadioButtonStyle}" Checked="EmployeeRB_Checked">
+                        <RadioButton x:Name="EmployeeRB" Style="{DynamicResource NavigationItemRadioButtonStyle}" Checked="EmployeeRB_Checked">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{DynamicResource EmployeeNavMenu}" Foreground="{DynamicResource TextPrimaryColor}" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,15,0" />
