@@ -1,5 +1,5 @@
-﻿using RestaurantApp.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using RestaurantApp.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -32,7 +32,7 @@ namespace RestaurantApp.Views.Pages
                         || e.MiddleName!.Contains(filter)
                         || e.PhoneNumber.Contains(filter)
                         || e.Login.Contains(filter)
-                        || e.EmployeeTitle!.Title.Contains(filter))                        
+                        || e.EmployeeTitle!.Title.Contains(filter))
                         .ToListAsync();
                     EmployeeGrid.ItemsSource = employees;
                 }
@@ -47,7 +47,6 @@ namespace RestaurantApp.Views.Pages
                 {
                     MessageBox.Show($"Error when loading data: {ex.Message}");
                 }
-
             }
         }
 
@@ -118,8 +117,8 @@ namespace RestaurantApp.Views.Pages
             EditButton.IsEnabled = EmployeeGrid.SelectedItem != null;
             if (EmployeeGrid.SelectedItem != null)
             {
-                BlockButton.Style = ((Employee)EmployeeGrid.SelectedItem!).isActive ? 
-                (Style)FindResource("EmployeeBlockButtonStyle") : 
+                BlockButton.Style = ((Employee)EmployeeGrid.SelectedItem!).isActive ?
+                (Style)FindResource("EmployeeBlockButtonStyle") :
                 (Style)FindResource("EmployeeUnblockButtonStyle");
             }
             else

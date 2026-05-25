@@ -10,7 +10,8 @@
         Background="Transparent"
         AllowsTransparency="True"
         MaxHeight="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}"
-        Foreground="{DynamicResource TextPrimaryColor}">
+        Foreground="{DynamicResource TextPrimaryColor}"
+        Loaded="MainWindowLoaded">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="45" 
@@ -90,7 +91,7 @@
             <Border CornerRadius="0,0,0,5" Grid.Row="1" Grid.Column="0" Width="250" x:Name="NavigationSidebar" Background="{DynamicResource SecondaryBgColor}">
                 <Grid>
                     <StackPanel VerticalAlignment="Top">
-                        <RadioButton IsChecked="True" Style="{DynamicResource NavigationItemRadioButtonStyle}">
+                        <RadioButton IsChecked="True" Style="{DynamicResource NavigationItemRadioButtonStyle}" Checked="HomeRB_Checked">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{DynamicResource HomeNavMenu}" Foreground="{DynamicResource TextPrimaryColor}" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,15,0" />
@@ -142,7 +143,7 @@
                     <Button Style="{DynamicResource LogoutButtonStyle}" Click="Exit_Click"/>
                 </Grid>
             </Border>
-            <Frame Grid.Row="1" Grid.Column="1" x:Name="frame" NavigationUIVisibility="Hidden"/>
+            <ContentControl Grid.Row="1" Grid.Column="1" x:Name="frame"/>
         </Grid>
     </Border>
 </Window>

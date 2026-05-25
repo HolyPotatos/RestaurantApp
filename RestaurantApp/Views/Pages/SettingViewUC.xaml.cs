@@ -73,7 +73,7 @@ namespace RestaurantApp.Views.Pages
                     MessageBox.Show(_isRu ? "Такой пароль уже стоит." : "New password cannot be the same as the current one.", _isRu ? "Ошибка" : "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                if(VerifyPassword && UserNewPasswordBox.Password.Trim() == RepeatUserNewPasswordBox.Password.Trim())
+                if (VerifyPassword && UserNewPasswordBox.Password.Trim() == RepeatUserNewPasswordBox.Password.Trim())
                 {
                     try
                     {
@@ -95,7 +95,7 @@ namespace RestaurantApp.Views.Pages
                             MessageBox.Show($"An error has occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
-                    
+
                 }
                 else
                 {

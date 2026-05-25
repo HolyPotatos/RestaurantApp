@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    
+
     <!--General-->
     <sys:String x:Key="SearchTitle">Поиск...</sys:String>
     <sys:String x:Key="AddButtonTooltip">Добавить новую запись</sys:String>
@@ -87,5 +87,16 @@
     <sys:String x:Key="ReservationCancelled">Отменен</sys:String>
     <sys:String x:Key="ReservationCancelledTooltip">Отменить бронирование</sys:String>
     <sys:String x:Key="ReservationTitle">Бронирования</sys:String>
-
+    <!--DashboardViewUC-->
+    <sys:String x:Key="DashboardTitle">Показатели</sys:String>
+    <sys:String x:Key="1WeekPeriod">1 Неделя</sys:String>
+    <sys:String x:Key="1MonthPeriod">1 Месяц</sys:String>
+    <sys:String x:Key="3MonthPeriod">3 Месяца</sys:String>
+    <sys:String x:Key="6MonthPeriod">6 Месяцев</sys:String>
+    <sys:String x:Key="1YearPeriod">1 Год</sys:String>
+    <sys:String x:Key="TotalRevenueTitle">Общая выручка</sys:String>
+    <sys:String x:Key="OrdersCountTitle">Количество заказов</sys:String>
+    <sys:String x:Key="AvgCheckTitle">Средний чек</sys:String>
+    <sys:String x:Key="RevenueTitle">График выручки</sys:String>
+    <sys:String x:Key="ExcelExportTitle">Экспортировать в Excel</sys:String>
 </ResourceDictionary>

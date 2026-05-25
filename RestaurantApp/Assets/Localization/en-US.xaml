@@ -87,5 +87,16 @@
     <sys:String x:Key="ReservationCancelled">Cancelled</sys:String>
     <sys:String x:Key="ReservationCancelledTooltip">Cancel reservation</sys:String>
     <sys:String x:Key="ReservationTitle">Reservation</sys:String>
-
+    <!--DashboardViewUC-->
+    <sys:String x:Key="DashboardTitle">Dashboard</sys:String>
+    <sys:String x:Key="1WeekPeriod">1 Week</sys:String>
+    <sys:String x:Key="1MonthPeriod">1 Month</sys:String>
+    <sys:String x:Key="3MonthPeriod">3 Months</sys:String>
+    <sys:String x:Key="6MonthPeriod">6 Months</sys:String>
+    <sys:String x:Key="1YearPeriod">1 Year</sys:String>
+    <sys:String x:Key="TotalRevenueTitle">Total Revenue</sys:String>
+    <sys:String x:Key="OrdersCountTitle">Orders Count</sys:String>
+    <sys:String x:Key="AvgCheckTitle">Average Check</sys:String>
+    <sys:String x:Key="RevenueTitle">Revenue Chart</sys:String>
+    <sys:String x:Key="ExcelExportTitle">Export to Excel</sys:String>
 </ResourceDictionary>

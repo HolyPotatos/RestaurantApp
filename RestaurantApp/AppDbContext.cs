@@ -3,10 +3,10 @@ using RestaurantApp.Models;
 using System.Configuration;
 
 namespace RestaurantApp
-{ 
+{
     public class AppDbContext : DbContext
     {
-        
+
         public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeTitle> EmployeeTitles { get; set; }
         public DbSet<Menu> Menus { get; set; }

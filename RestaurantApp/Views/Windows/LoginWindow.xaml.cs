@@ -1,5 +1,4 @@
-﻿using RestaurantApp.Models;
-using System.Windows;
+﻿using System.Windows;
 
 namespace RestaurantApp.Views.Windows
 {
@@ -8,6 +7,7 @@ namespace RestaurantApp.Views.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private bool _isRu = Application.Current.Resources.MergedDictionaries[2].Source.ToString().Contains("ru-RU.xaml");
         public LoginWindow()
         {
             InitializeComponent();
@@ -59,6 +59,10 @@ namespace RestaurantApp.Views.Windows
                     mw.Show();
                     this.Close();
                 }
+            }
+            catch
+            {
+                MessageBox.Show(_isRu ? "Ошибка подключения к базе данных." : "Error connecting to the database.", _isRu ? "Ошибка" : "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

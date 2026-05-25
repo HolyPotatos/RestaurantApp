@@ -40,6 +40,14 @@ namespace RestaurantApp.Views.Windows
 
         private void ReservationRB_Checked(object sender, RoutedEventArgs e) => frame.Content = new ReservationViewUC();
 
+        private void MainWindowLoaded(object sender, RoutedEventArgs e) => frame.Content = new DashboardViewUC();
+
+        private void HomeRB_Checked(object sender, RoutedEventArgs e)
+        {
+            if (frame != null)
+                frame.Content = new DashboardViewUC();
+        }
+
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             var lw = new LoginWindow();
